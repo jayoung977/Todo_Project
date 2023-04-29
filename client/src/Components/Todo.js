@@ -1,4 +1,7 @@
+import "../styles/Todo.scss";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 const Todo = ({ item, deleteItem }) => {
   console.log(item);
   const [todoItem, setTodoItem] = useState(item);
@@ -42,8 +45,9 @@ const Todo = ({ item, deleteItem }) => {
       //todoItem
       done: e.target.checked,
       ...rest,
-    }); //title,id는 그대로 있고 done값만 뒤집어서 넣음
+    }); //title,id는 그대로 있고 done값만  넣음
   };
+  const SIZES = ["xs", "sm", "lg", "2x", "3x", "5x", "7x", "10x"];
   return (
     <div className="Todo">
       <input
@@ -55,6 +59,7 @@ const Todo = ({ item, deleteItem }) => {
         //[6]-5 수정
         onChange={checkboxEventHandler}
       />
+      &nbsp; &nbsp;
       {/* [6]-1 수정 */}
       <input
         type="text"
@@ -64,8 +69,16 @@ const Todo = ({ item, deleteItem }) => {
         onKeyPress={enterKeyEventHandler} //한글 중복 입력 문제
         //[6]-4 수정
         onChange={editEventHandler}
+        className={`${todoItem.done ? "checked" : ""}`}
       />
-      <button onClick={onDeleteButtonClick}>DELETE</button>
+      &nbsp; &nbsp;
+      <button onClick={onDeleteButtonClick}>
+        <FontAwesomeIcon
+          icon={faTrashCan}
+          size={SIZES[3]}
+          className="trashCan"
+        />
+      </button>
     </div>
   );
 };

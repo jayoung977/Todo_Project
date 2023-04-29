@@ -1,0 +1,13 @@
+@import "./_utils.scss";
+.Header {
+  width: 100%;
+  text-align: center;
+  background-color: $header-bg-color;
+  color: $header-color;
+  padding: 30px 0;
+  font-size: 2rem;
+  .HeaderStr {
+    font-weight: 700;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}

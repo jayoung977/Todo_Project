@@ -1,0 +1,40 @@
+//Todo.js에 적용할 scss
+@import "./_utils.scss";
+.Todo {
+  margin-top: 20px;
+  input[type="checkbox"] {
+    accent-color: $checkbox-bg-color;
+    // width: 100px;
+    zoom: 2;
+    position: relative;
+    top: 4px;
+    cursor: pointer;
+  }
+  input[type="text"] {
+    border-radius: 5px;
+    border: none;
+    zoom: 1.5;
+    padding: 4px 4px 2px;
+    background-color: $input-todo-bg-color-opacity;
+
+    // border-bottom: 3px solid $input-bolder-color;
+    &:focus {
+      outline: none;
+    }
+  }
+  button {
+    border: transparent;
+    position: relative;
+    top: 4px;
+    background-color: transparent;
+    cursor: pointer;
+    .trashCan {
+      color: #f98f6c;
+      background-color: transparent;
+    }
+  }
+  .checked {
+    color: grey;
+    text-decoration-line: line-through;
+  }
+}

@@ -1,6 +1,11 @@
 import { useState } from "react";
 import Todo from "./Components/Todo";
 import AddTodo from "./Components/AddTodo";
+import "./styles/App.scss";
+
+import Header from "./Components/Header";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSync } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
   //1. state값 지정 (초기 배열)
@@ -42,12 +47,19 @@ function App() {
   // }
   return (
     <div className="App">
+      <Header />
       {/*3. Todo 추가 input */}
       <AddTodo addItem={addItem} />
+      {/* 미션: 현재 todo목록 개수 올리기 */}
+      <h3>Total: {todoItems.length} </h3>
       {/* Todo 목록 보이기 */}
-      {todoItems.map((item) => {
-        return <Todo key={item.id} item={item} deleteItem={deleteItem} />; //2.prop으로 값 넘기기
-      })}
+      {todoItems.length !== 0 ? (
+        todoItems.map((item) => {
+          return <Todo key={item.id} item={item} deleteItem={deleteItem} />; //2.prop으로 값 넘기기
+        })
+      ) : (
+        <h3>값을 추가해주세요 🥹</h3>
+      )}
     </div>
   );
 }

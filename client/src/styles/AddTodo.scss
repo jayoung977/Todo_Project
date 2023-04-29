@@ -1,0 +1,30 @@
+//AddTodo.js에 적용할 scss
+@import "./_utils.scss";
+.AddTodo {
+  margin-top: 80px;
+  margin-bottom: 20px;
+  input[type="text"] {
+    border-radius: 5px;
+    border: none;
+    zoom: 1.5;
+    padding: 4px 50px 4px 15px;
+    text-align: left;
+    background-color: $input-add-bg-color-opacity;
+
+    // border-bottom: 3px solid $input-bolder-color;
+    &:focus {
+      outline: none;
+    }
+  }
+  button {
+    position: relative;
+    top: 4px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    .PlusBtn {
+      color: #f98f6c;
+      background-color: transparent;
+    }
+  }
+}
