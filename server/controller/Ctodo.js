@@ -5,18 +5,19 @@ exports.main = (req, res) => {
 // (1)  GET /todos - show all todo
 exports.readTodos = async (req, res) => {
   const result = await models.Todo.findAll();
-  console.log("(1) Ctodo.js readTodos findAll >> ", result);
+  // console.log("(1) Ctodo.js readTodos findAll >> ", result);
   res.send(result);
   // res.render("todos", { data: result });
 };
 // (2) POST /todo - create a new todo
 exports.createTodo = async (req, res) => {
   const result = await models.Todo.create({
-    id: req.body.id,
+    // id: req.body.id,
     title: req.body.title,
-    done: req.body.done,
+    // done: req.body.done,
+    done: false, // todoItem 추가시 false가 기본 값
   });
-  console.log("(2)  Ctodo.js createTodo create >> ", result);
+  // console.log("(2)  Ctodo.js createTodo create >> ", result);
   res.send(result);
 };
 
@@ -24,10 +25,10 @@ exports.createTodo = async (req, res) => {
 
 exports.updateTodo = async (req, res) => {
   // req.params.id
-  console.log("(3) Ctodo.js updateTodo req.params.id", req.params.id);
+  // console.log("(3) Ctodo.js updateTodo req.params.id", req.params.id);
   const result = await models.Todo.update(
     {
-      id: req.params.todoId,
+      // id: req.params.todoId,
       title: req.body.title,
       done: req.body.done,
     },
@@ -35,8 +36,8 @@ exports.updateTodo = async (req, res) => {
       where: { id: req.params.todoId },
     }
   );
-  console.log(" (3) Ctodo.js updateTodo update >>", result);
-  res.end();
+  // console.log(" (3) Ctodo.js updateTodo update >>", result);
+  res.send(true);
 };
 
 // (4) DELETE /todo/:todoId - remove a specific todo
@@ -44,6 +45,6 @@ exports.deleteTodo = async (req, res) => {
   await models.Todo.destroy({
     where: { id: req.params.todoId },
   });
-  console.log(" (4) Ctodo.js deleteTodo destroy >>", req.params.todoId);
-  res.end();
+  // console.log(" (4) Ctodo.js deleteTodo destroy >>", req.params.todoId);
+  res.send(true);
 };

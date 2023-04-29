@@ -17,11 +17,11 @@
   background-size: cover;
   overflow-y: auto;
   overflow-x: hidden;
+  padding-bottom: 50px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  //   border: 5px solid $checkbox-bg-color;
 
   h3 {
     color: $app-h3-color;

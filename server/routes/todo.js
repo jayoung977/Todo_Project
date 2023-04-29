@@ -10,7 +10,7 @@ router.get("/todos", controller.readTodos); // 전체 조회
 router.post("/todo", controller.createTodo); //하나 추가(생성)
 
 // (3) PATCH /todo/:todoId - edit a specific todo
-router.post("/todo/:todoId", controller.updateTodo); // 하나 조회/수정
+router.patch("/todo/:todoId", controller.updateTodo); // 하나 조회/수정
 
 // (4) DELETE /todo/:todoId - remove a specific todo
 router.delete("/todo/:todoId", controller.deleteTodo); //하나 삭제

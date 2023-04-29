@@ -2,7 +2,7 @@ import "../styles/Todo.scss";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-const Todo = ({ item, deleteItem }) => {
+const Todo = ({ item, deleteItem, updateItem }) => {
   console.log(item);
   const [todoItem, setTodoItem] = useState(item);
   const [readOnly, setReadOnly] = useState(true); //초기값: 읽기모드 (수정전)
@@ -21,6 +21,7 @@ const Todo = ({ item, deleteItem }) => {
   const enterKeyEventHandler = (e) => {
     if (e.key === "Enter") {
       setReadOnly(true);
+      updateItem(todoItem); //BackEnd 수정 1- text input에서 enter 누르면 수정완료
     }
   };
   //[6]-4 수정
@@ -38,14 +39,23 @@ const Todo = ({ item, deleteItem }) => {
   //[6]-5 수정
   //checkbox의 체크 여부에 따라 todoItem state의 done 상태값을 변경
   const checkboxEventHandler = (e) => {
-    // console.log(todoItem);
+    //[FrontEnd]
+    // // console.log(todoItem);
+    // const { done, ...rest } = todoItem;
+    // // todoItem.done = !todoItem.done; //-> 변경 안됨 무조건 set함수 사용 ->editEventHandler에서 e.target.checked값 넘김
+    // setTodoItem({
+    //   //todoItem
+    //   done: e.target.checked,
+    //   ...rest,
+    // }); //title,id는 그대로 있고 done값만  넣음
+    //[BackEnd]
     const { done, ...rest } = todoItem;
-    // todoItem.done = !todoItem.done; //-> 변경 안됨 무조건 set함수 사용 ->editEventHandler에서 e.target.checked값 넘김
-    setTodoItem({
-      //todoItem
+    const updatedItem = {
       done: e.target.checked,
       ...rest,
-    }); //title,id는 그대로 있고 done값만  넣음
+    };
+    setTodoItem(updatedItem);
+    updateItem(updatedItem); //BackEnd 수정 2- checkout input에서 check 누르면 수정완료
   };
   const SIZES = ["xs", "sm", "lg", "2x", "3x", "5x", "7x", "10x"];
   return (
