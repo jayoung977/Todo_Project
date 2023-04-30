@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 const Todo = ({ item, deleteItem, updateItem }) => {
-  console.log(item);
+  // console.log(item);
   const [todoItem, setTodoItem] = useState(item);
   const [readOnly, setReadOnly] = useState(true); //초기값: 읽기모드 (수정전)
   const onDeleteButtonClick = () => {
@@ -58,6 +58,7 @@ const Todo = ({ item, deleteItem, updateItem }) => {
     updateItem(updatedItem); //BackEnd 수정 2- checkout input에서 check 누르면 수정완료
   };
   const SIZES = ["xs", "sm", "lg", "2x", "3x", "5x", "7x", "10x"];
+
   return (
     <div className="Todo">
       <input
