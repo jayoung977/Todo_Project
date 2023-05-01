@@ -6,6 +6,8 @@ exports.main = (req, res) => {
 exports.readTodos = async (req, res) => {
   const result = await models.Todo.findAll();
   // console.log("(1) Ctodo.js readTodos findAll >> ", result);
+  //내림 차순 방법 2
+  //  .findAll({ order: [['id','DESC']] });
   res.send(result);
   // res.render("todos", { data: result });
 };

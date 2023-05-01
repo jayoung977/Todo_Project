@@ -40,7 +40,11 @@ function App() {
     console.log("mount 완료");
     const getTodos = async () => {
       const res = await axios.get(`${API_BASE_URL}/api/todos`);
-      setTodoItems(res.data);
+      // setTodoItems(res.data);
+      setTodoItems(res.data.reverse()); //내림차순 방법 1-1
+      // setTodoItems(res.data);//내림차순 방법 2 서버측에서 변경
+      //서버측 select * from todos order by id desc
+      //->   //  .findAll({ order: [['id','DESC']] });
     };
     getTodos();
     if (divApp.current) {
@@ -72,7 +76,8 @@ function App() {
     // console.log("res >>", res);
     //...todoItems: 기존 아이템
     // res.data: 새로 추가한 아이템  {title : "xxx", id: n, done: 0}
-    setTodoItems([...todoItems, res.data]);
+    // setTodoItems([...todoItems, res.data]);
+    setTodoItems([res.data, ...todoItems]); //내림차순 방법 1-2
     //다른 방법: 프론트 데이터 사용 send.end()처리
     // newItem.id = todoItems.length + 1;
     // newItem.done = 0;
