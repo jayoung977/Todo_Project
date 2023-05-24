@@ -36,6 +36,8 @@ server {
         } 
 }
 ```
+
+```
 sudo ln -s /etc/nginx/sites-available/my-todo-app.conf /etc/nginx/sites-enabled/my-todo-app.conf
 sudo systemctl stop nginx
 sudo systemctl start nginx 
