@@ -20,8 +20,13 @@
 git clone https://github.com/jayoung977/Todo_Project.git
 cd server
 node app.js
+```
+```
 cd client
 sudo vi /etc/nginx/sites-available/my-todo-app.conf
+```
+```
+#편집기 입력
 server { 
         listen 80; 
         location / { 
@@ -30,6 +35,7 @@ server {
                 try_files $uri /index.html; 
         } 
 }
+```
 sudo ln -s /etc/nginx/sites-available/my-todo-app.conf /etc/nginx/sites-enabled/my-todo-app.conf
 sudo systemctl stop nginx
 sudo systemctl start nginx 
