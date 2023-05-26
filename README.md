@@ -43,5 +43,5 @@ sudo systemctl stop nginx
 sudo systemctl start nginx 
 sudo systemctl status nginx 
 ```
-- aws 배포링크: http://3.106.52.247/
+- aws 배포링크: http://13.236.182.92/
 
